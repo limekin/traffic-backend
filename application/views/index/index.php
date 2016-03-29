@@ -35,7 +35,7 @@
 		<div class="login-panel panel panel-default">
 			<div class="panel-heading">Log in</div>
 			<div class="panel-body">
-				<form role="form" method="POST" action="<?php echo base_url();?>/index.php/auth/login">
+				<form role="form" method="POST" action="<?php echo base_url();?>index.php/auth/login">
 					<fieldset>
 						<div class="form-group">
 							<input class="form-control" placeholder="Username" name="username" type="text" autofocus="">

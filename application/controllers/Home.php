@@ -37,7 +37,6 @@ class Home extends CI_Controller {
 
         load_view("home/users", $locals, $this);
     }
-
     // Shows the list of the statistics in the page.
     public function statistics() {
         $stats = $this->stats->get_overall_stat();

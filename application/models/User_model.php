@@ -10,7 +10,7 @@ class User_model extends CI_Model {
         $this->db->select('users.*, count(violations.id) as violations_reported');
         $this->db->from('users');
         $this->db->join("violations", "users.id=violations.user_id", "left outer");
-        $this->db->group_by("users.id");
+        $this->db->group_by("users.id, users.auth_id, users.name, users.email");
         $this->db->order_by("violations_reported", "DESC");
         $query = $this->db->get();
 
@@ -22,7 +22,7 @@ class User_model extends CI_Model {
         if(! $okay)
             showjson_error($this->db->error()["message"]);
     }
-
+    
     // Gets the count of all the users in the databaas.e
     public function count() {
         $this->db->select("count(id) as user_count");

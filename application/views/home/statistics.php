@@ -33,7 +33,7 @@
                 <br>
                 <div class="violation-stats">
                     <?php foreach($stats as $stat): ?>
-                        <div class="panel panel-primary violation-stat">
+                        <div class="panel panel-warning violation-stat">
                             <p class="panel-heading location">
                                 <?php echo $stat->location; ?>
                             </p>
