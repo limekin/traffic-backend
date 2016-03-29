@@ -1,0 +1,20 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Auth_model extends CI_Model {
+  public function __construct() {
+    parent::__construct();  
+  }
+
+  public function insert($data) {
+    // Insert the data into the database.
+    $dataIns = array();
+    $dataIns['username'] = $data['username'];
+    $dataIns['password'] = $data['password'];
+    $dataIns['user_type'] = 'normal';
+    $this->db->insert('auth', $dataIns);
+
+    // Now get the last insert id.
+    return $this->db->insert_id();
+  }
+}

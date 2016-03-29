@@ -1,0 +1,8 @@
+.violation .type {
+    font-weight: bold;
+}
+
+.violation .meta {
+    font-size: .8em;
+    color: silver;
+}

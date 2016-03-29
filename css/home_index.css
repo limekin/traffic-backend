@@ -1,0 +1,17 @@
+.recent_violation .violation_type {
+    color: black;
+}
+
+.recent_violation .image img {
+    margin: 10px 0px;
+    min-height: 100px;
+    min-width: 100px;
+}
+
+.recent_violation .description {
+    color: #636363;
+    margin-top: 10px;
+}
+.navbar-brand {
+	color: #E3323E;
+}

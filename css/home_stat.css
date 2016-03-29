@@ -1,0 +1,9 @@
+.violation-stat .violation-count {
+    font-size: 2em;
+    color: #E3323E;
+    display: inline-block;
+    margin-right: 10px;
+}
+.violation-stat .most-type {
+    color: grey;
+}

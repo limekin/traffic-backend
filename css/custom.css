@@ -1,0 +1,14 @@
+h1, h2, h3 {
+	/*text-transform: uppercase;*/
+	font-weight: 500;
+    color: #2638BF;
+}
+
+.navbar-inverse .navbar-brand {
+	color: white;
+}
+.navbar-inverse {
+	box-shadow: 0px 1px 10px -3px black;
+	background-color: #2638BF;
+	border-bottom: 3px solid black;
+}
