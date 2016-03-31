@@ -94,4 +94,9 @@ class Violation_model extends CI_Model {
     public function delete($violation_id) {
         $this->db->delete("violations", array("id" => $violation_id));
     }
+
+    public function delete_by_user_id($id) {
+        $this->db->where('user_id', $id);
+        $this->db->delete('violations');
+    }
 }

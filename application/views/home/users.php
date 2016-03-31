@@ -68,7 +68,7 @@
                             test@gmail.com
                         </td>
                         <td>
-                            <a href='#' class='btn btn-danger btn-sm'>
+                            <a href='#' onclick="remove_user(<?php echo $user->id;?>)" class='btn btn-danger btn-sm'>
                                 Ban
                             </a>
                         </td>
@@ -77,3 +77,7 @@
         </table>
     </div>
 </div>
+
+<!-- The script that handles the removal of the user. -->
+<script src="<?php echo base_url("js/ban_user.js");?>">
+</script>

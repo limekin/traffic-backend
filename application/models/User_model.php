@@ -22,7 +22,7 @@ class User_model extends CI_Model {
         if(! $okay)
             showjson_error($this->db->error()["message"]);
     }
-    
+
     // Gets the count of all the users in the databaas.e
     public function count() {
         $this->db->select("count(id) as user_count");
@@ -78,5 +78,10 @@ class User_model extends CI_Model {
         return $result ? $result->violation_count : 0;
     }
 
+    // Removes the user with the given id.
+    public function remove($id) {
+        $this->db->where('id', $id);
+        $this->db->delete('users');
+    }
 
 }

@@ -14,7 +14,7 @@ class Home extends CI_Controller {
         $this->load->model("Statistic_model", "stats");
         $this->load->model("Violation_model", "violations");
         $this->load->model("Violation_type_model", "violation_types");
-        $this->load->model("Rto_contact_model", "rto_contacts");
+        $this->load->model("Rto_contact_model", "contacts");
     }
 
     public function index() {
@@ -38,6 +38,16 @@ class Home extends CI_Controller {
 
         load_view("home/users", $locals, $this);
     }
+
+    // Removes the user form the table. Also remove the violations of
+    // the user.
+    public function remove_user($id) {
+        $this->users->remove($id);
+        $this->violations->delete_by_user_id($id);
+
+        redirect( site_url("home/users") );
+    }
+
     // Shows the list of the statistics in the page.
     public function statistics() {
         $stats = $this->stats->get_overall_stat();
@@ -56,8 +66,51 @@ class Home extends CI_Controller {
     // Shows the list of all the rto contacts in the database.
     public function rto_contacts() {
         $contacts = $this->rto_contacts->all();
+        $locals = array(
+            'contacts' => $contacts,
+            '_page' => "contacts"
+        );
 
-        load_view("home/rto_contacts", array("contacts" => $contacts), $this);
+        load_view("home/contacts", $locals, $this);
+    }
+
+    // Shows the list of all the rto contacts in the database.
+    public function contacts() {
+        $contacts = $this->contacts->all();
+        $locals = array(
+            'contacts' => $contacts,
+            '_page' => "contacts"
+        );
+
+        load_view("home/contacts", $locals, $this);
+    }
+
+    // Shows the page to add the contact ot the database.
+    public function add_contact() {
+
+        if($this->input->server("REQUEST_METHOD") == 'POST')
+            $this->add_contact_post();
+        $locals = array(
+            '_page' => "add_contact"
+        );
+        load_view("home/add_contact", $locals, $this);
+    }
+
+    public function add_contact_post() {
+        $data = array(
+            'name' => $this->input->post('name'),
+            'mobile' => $this->input->post('mobile'),
+            'email' => $this->input->post('email')
+        );
+
+        $this->contacts->insert($data);
+        echo "<script>alert('Contact added.');</script>";
+    }
+
+    public function remove_contact($id) {
+        $this->contacts->remove($id);
+
+        redirect( site_url("home/contacts"));
     }
 
     // Shows the list of all the violation in the iste.

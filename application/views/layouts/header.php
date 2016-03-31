@@ -170,8 +170,11 @@
                     <li class="<?php echo get_active('violations', $_page);?>">
                         <a href="<?php echo site_url('home/violations');?>"><i class="fa fa-fw fa-table"></i> Violations</a>
                     </li>
-                    <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                    <li class="<?php echo get_active('contacts', $_page);?>">
+                        <a href="<?php echo site_url('home/contacts');?>"><i class="fa fa-fw fa-table"></i> Contacts</a>
+                    </li>
+                    <li class="<?php echo get_active('add_contact', $_page);?>">
+                        <a href="<?php echo site_url('home/add_contact');?>"><i class="fa fa-fw fa-table"></i> Add Contact</a>
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>

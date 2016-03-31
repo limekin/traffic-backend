@@ -17,4 +17,9 @@ class Rto_contact_model extends CI_Model {
     public function insert($data) {
         $this->db->insert("rto_contacts", $data);
     }
+
+    public function remove($id) {
+        $this->db->where('id', $id);
+        $this->db->delete('rto_contacts');
+    }
 }
