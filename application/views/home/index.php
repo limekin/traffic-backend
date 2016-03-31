@@ -32,6 +32,13 @@
 </div>
 -->
 
+        <!--
+            Populate the violation type stat, so that it can be used later
+            for building the douhnut chart.
+        -->
+        <script>
+            window.type_stats = <?php echo json_encode($type_stat); ?>;
+        </script>
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -73,7 +80,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="<?php echo site_url('home/violations'); ?>">
                                 <div class="panel-footer">
                                     <span class="pull-left">View All</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -97,7 +104,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="<?php echo site_url('home/users');?>">
                                 <div class="panel-footer">
                                     <span class="pull-left">View All</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -107,6 +114,25 @@
                         </div>
                     </div>
 				</div>
+
+                <!-- Violation type statistics. -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Violation Type statistics</h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <br>
+                        <br>
+                        <canvas id="myChart" width="300" height="300"></canvas>
+                        <div id="chart_info">
+                        </div>
+
+                    </div>
+                </div>
+                <!-- close Violation type statistics. -->
 
 				<div class="row">
 					<div class="col-md-12">
@@ -144,10 +170,18 @@
 							</div>
 						</div>
 					</div>
-                </div>
+                </div> <!-- Row close. -->
 				<?php endforeach; ?>
+
             </div>
             <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
+
+        <!-- Chart.js for cool charts !!! :D -->
+        <script src="<?php echo base_url('js/chart.min.js'); ?>">
+        </script>
+        <!-- For loading the setting up the pie chart. -->
+        <script src="<?php echo base_url('js/chart_module.js');?>">
+        </script>

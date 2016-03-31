@@ -21,7 +21,6 @@ class Statistic_model extends CI_Model {
         foreach($result as $violation) {
             $violation_stat = $this
                 ->get_max_violation_type($violation->location);
-            error_log("Location : " . print_r($violation_stat,true), 4);
             $violation->max_type = $violation_stat->violation_type;
         }
 
@@ -40,6 +39,28 @@ class Statistic_model extends CI_Model {
         $result = $query->row();
         return $result;
     }
+
+    // Adds type statistics for each of the reports.
+    public function attach_type_stat($reports) {
+        foreach($reports as $report) {
+            $report->type_stats = $this->get_type_stat($report->location);
+            error_log(print_r($report, true), 4);
+        }
+
+        return $reports;
+    }
+
+    // Gets the type stats for the given location.
+    public function get_type_stat($location) {
+        $this->db->select('violation_type, count(id) as report_count');
+        $this->db->from('violations');
+        $this->db->group_by('violation_type');
+        $this->db->where('location', $location);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
 //SELECT count(id) as type_count, violation_type, location from violations GROUP BY violation_type WHERE location="Nandikkara" ORDER BY type_count DESC
 
 }

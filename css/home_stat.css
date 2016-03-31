@@ -1,9 +1,13 @@
 .violation-stat .violation-count {
-    font-size: 2em;
+    font-size: 5em;
     color: #E3323E;
     display: inline-block;
     margin-right: 10px;
 }
 .violation-stat .most-type {
-    color: grey;
+    color: red;
+    font-weight: bold;
+}
+.violation-stat .chart {
+    padding: 30px;
 }

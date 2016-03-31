@@ -53,6 +53,16 @@ class Violation_model extends CI_Model {
         $this->db->update("violations", $data);
     }
 
+    // Gets the list of all reported violations along with their,
+    // report count.
+    public function get_type_stat() {
+        $this->db->select('violation_type, count(id) as report_count');
+        $this->db->from('violations');
+        $this->db->group_by('violation_type');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
     public function insert($data) {
         $okay = $this->db->insert('violations', $data);
         if(! $okay) {

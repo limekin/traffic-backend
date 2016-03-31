@@ -24,6 +24,14 @@
     </div>
 </div>
 -->
+
+<!-- For adding type stats for the statisticss. -->
+<script>
+    window.stats = [];
+    <?php foreach($stats as $stat): ?>
+        window.stats.push( <?php echo json_encode($stat->type_stats); ?> );
+    <?php endforeach; ?>
+</script>
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -32,8 +40,8 @@
                 <br>
                 <br>
                 <div class="violation-stats">
-                    <?php foreach($stats as $stat): ?>
-                        <div class="panel panel-warning violation-stat">
+                    <?php foreach($stats as $index => $stat): ?>
+                        <div class="panel panel-primary violation-stat">
                             <p class="panel-heading location">
                                 <?php echo $stat->location; ?>
                             </p>
@@ -51,6 +59,14 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="chart">
+                                <p><strong>
+                                    Percent statistics of violation types for this
+                                    location
+                                </strong></p>
+                                <br>
+                                <canvas id="<?php echo $index;?>_canvas" width="150" height="150"></canvas>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -59,3 +75,12 @@
 
     </div>
 </div>
+
+<!-- For charts.js. -->
+<script src="<?php echo base_url('js/chart.min.js');?>">
+</script>
+<!-- Chat module. -->
+<script src="<?php echo base_url('js/chart_statistics.js');?>">
+</script>
+
+<!-- For chat_scripts. -->

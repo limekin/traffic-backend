@@ -6,3 +6,29 @@
     font-size: .8em;
     color: silver;
 }
+.violation .number-plate {
+    color: #363636;
+    font-size: .8em;
+    margin-bottom: 10px;
+}
+.violation .image img {
+    box-shadow: 2px 2px 4px -1px black;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
+.violation .description {
+    color: #525252;
+    margin-bottom: 10px;
+}
+.violation .violation-actions {
+    font-size: .8em;
+}
+.violation .violation-actions a {
+}
+.violation .reg-no {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: brown;
+}

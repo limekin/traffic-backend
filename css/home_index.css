@@ -15,3 +15,18 @@
 .navbar-brand {
 	color: #E3323E;
 }
+
+
+#chart-info {
+    margin-top: 20px;
+}
+.chart_info {
+    margin-bottom: 5px;
+}
+.chart_info .color_info {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: bottom;
+}

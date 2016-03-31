@@ -22,6 +22,7 @@ class Home extends CI_Controller {
             "violations_count" =>  $this->violations->new_count(),
             "user_count" => $this->users->count(),
             "recent_violations" => $this->violations->get_recent(4),
+            "type_stat" => $this->violations->get_type_stat(),
             "_page" => "home"
         );
         load_view("home/index", $data, $this);
@@ -40,6 +41,10 @@ class Home extends CI_Controller {
     // Shows the list of the statistics in the page.
     public function statistics() {
         $stats = $this->stats->get_overall_stat();
+        // Now for each of the reports get the reports grouped
+        // by their types.
+        $stats = $this->stats->attach_type_stat($stats);
+
         $locals = array(
             "stats" => $stats,
             "_page" => "statistics"
@@ -107,4 +112,5 @@ class Home extends CI_Controller {
         $this->rto_contacts->insert($data);
         redirect( site_url("home/rto_contacts"));
     }
+
 }

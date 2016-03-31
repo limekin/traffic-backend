@@ -56,7 +56,7 @@
         <h3>Showing all the violations</h3>
     <div class="violations">
         <?php foreach($violations as $violation): ?>
-            <div class='violation panel panel-default'>
+            <div class='violation panel panel-warning'>
             <div class="panel panel-heading">
                 <div class='type'>
                     <?php echo $violation->violation_type; ?>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="number-plate">
                     Registration number :
-                    <?php echo $violation->vehicle_plate_no; ?>
+                    <span class='reg-no'><?php echo $violation->vehicle_plate_no; ?></span>
                 </div>
                 <div class="image">
                     <img src="<?php echo base_url($violation->image_path);?>"/>
@@ -88,15 +88,10 @@
                         $partially_track_url =
                             site_url('/violations/partially_track?id='.$violation->id);
                     ?>
-                    <a href="<?php echo $track_url;?>">
+                    <a class='btn btn-sm btn-default' href="<?php echo $track_url;?>">
                         Track
                     </a>
-                    |
-                    <a href="<?php echo $partially_track_url;?>">
-                        Track Partially
-                    </a>
-                    |
-                    <a href="<?php echo $discard_url;?>">
+                    <a class='btn btn-sm btn-danger' href="<?php echo $discard_url;?>">
                         Discard
                     </a>
 
