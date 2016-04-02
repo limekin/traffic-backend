@@ -115,7 +115,7 @@ class Home extends CI_Controller {
 
     // Shows the list of all the violation in the iste.
     public function violations() {
-        $violations = $this->violations->all();
+        $violations = $this->violations->get_new();
         $locals = array(
             'violations' => $violations,
             '_page' => "violations"

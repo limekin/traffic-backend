@@ -100,7 +100,7 @@
                                         <div class="huge">
 											<?php echo $user_count; ?>
 										</div>
-                                        <div>New Users</div>
+                                        <div>Users</div>
                                     </div>
                                 </div>
                             </div>

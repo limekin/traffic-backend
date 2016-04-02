@@ -99,6 +99,12 @@
             </div>
             </div>
         <?php endforeach; ?>
+
+        <?php if( count($violations) == 0 ): ?>
+            <p>
+                There aren't any pending violation reports as of now.
+            </p>
+        <?php endif; ?>
     </div>
 
     </div>

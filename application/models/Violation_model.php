@@ -17,9 +17,31 @@ class Violation_model extends CI_Model {
         return $query->result();
     }
 
+    public function get_new() {
+        $this->db->select("*");
+        $this->db->from("violations");
+        $this->db->where("status", "pending");
+        $this->db->order_by("reported_date", "DESC");
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    // Gets ta violation by a single id.
+    public function get_by_id($id) {
+        $this->db->select('*');
+        $this->db->from("violations");
+        $this->db->where('id', $id);
+
+        $query = $this->db->get();
+
+        return $query->row();
+    }
+
     public function new_count() {
         $this->db->select("count(id) as violation_count");
         $this->db->from("violations");
+        $this->db->where("status", "pending");
         $query = $this->db->get();
         $result = $query->row();
 
